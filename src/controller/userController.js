@@ -21,7 +21,7 @@ const createUser = async (req, res) => {
         if (!isValid(password)) { return res.status(400).send({ status: false, msg: "password is required" }) }
         if (!(/^.{8,15}$/).test(password)) {
             return res.status(400).send({ status: false, msg: "Password Length should be between 8 and 15" })}
-            // if (!(/^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$/.test(phone))) { return res.status(400).send({ status: false, msg: "please provide a valid moblie Number" }) }
+           
             let duplicateNickname = await userModel.findOne({ nickname: nickname })
             if (duplicateNickname) return res.status(400).send({ status: false, msg: 'Nickname is already exist' })
 
